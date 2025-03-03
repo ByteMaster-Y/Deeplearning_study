@@ -23,6 +23,7 @@ class Relu:
         self.mask = None
 
     def forward(self, x):
+        # 렐루에는 마스크라는 인스턴스 변수를 갖는다. 트루 폴스로 되어 있는 넘파이로 순전파의 입력인 x의 원소값이 0이하인 인덱스는 트루 그외는 펄스로.
         self.mask = (x <= 0)
         out = x.copy()
         out[self.mask] = 0
@@ -35,6 +36,9 @@ class Relu:
 
         return dx
 
+
+# forward() (순전파)	새로운 배열(out)을 만들어 반환	❌ 원본 x 변경 없음
+# backward() (역전파)	입력 배열(dout)을 직접 수정	✅ 원본 dout이 변경됨
 
 # 5.5.2 Sigmoid 계층
 """
