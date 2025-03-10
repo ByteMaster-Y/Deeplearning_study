@@ -159,3 +159,16 @@ plt.show()
 # 최종 테스트 정확도 출력
 final_acc = model.evaluate(x_test[:1000], t_test[:1000], verbose=0)[1]
 print(f"Final Test Accuracy: {final_acc:.3f}")
+
+"""
+sparse_categorical_crossentropy와 categorical_crossentropy는 둘 다 다중 클래스 분류에서 사용되는 손실 함수야. 하지만 차이점이 있어!
+
+✅ 차이점 정리
+손실 함수	                       정답 라벨 형태	   예측값 형태
+sparse_categorical_crossentropy	정수 인덱스(label)	원-핫 벡터
+categorical_crossentropy	    원-핫 벡터	        원-핫 벡터
+즉,
+
+정답 라벨이 정수(0,1,2,...)일 경우 → sparse_categorical_crossentropy 사용
+정답 라벨이 원-핫 벡터([1,0,0], [0,1,0]...)일 경우 → categorical_crossentropy 사용
+"""
